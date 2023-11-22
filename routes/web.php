@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\UsuarioController;
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\VendasController;
 use Illuminate\Support\Facades\Route;
@@ -17,16 +17,12 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-/* Prefixo "dashboard" */
-Route::prefix('dashboard')->group(function () {
-    /* http://localhost:8989/dashboard */
-    Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
-});
+    /* http://localhost:8989 */
+    Route::get('/', [EmpresaController::class, 'index'])->name('empresa.index');
 
 /* Prefixo "produtos" */
 Route::prefix('produtos')->group(function () {
-    /* http://localhost:8989/produtos */
+    /* http://localhost:8989 */
     Route::get('/', [ProdutosController::class, 'index'])->name('produto.index');
 
     /* ==Cadastrar create== */
@@ -112,4 +108,14 @@ Route::prefix('usuario')->group(function () {
     Route::get('/atualizarUsuario/{id}', [UsuarioController::class, 'atualizarUsuario'])->name('atualizar.usuario');
     Route::put('/atualizarUsuario/{id}', [UsuarioController::class, 'atualizarUsuario'])->name('atualizar.usuario');
     Route::delete('/delete', [UsuarioController::class, 'delete'])->name('usuario.delete');
+});
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('dashboard', function () {
+        return view('empresa');
+    })->name('dashboard');
 });

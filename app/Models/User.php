@@ -6,11 +6,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Fortify\TwoFactorAuthenticatable;
+use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens;
+    use HasFactory;
+    use HasProfilePhoto;
+    use Notifiable;
+    use TwoFactorAuthenticatable;
 
     /**
      * The attributes that are mass assignable.
@@ -31,6 +37,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'two_factor_recovery_codes',
+        'two_factor_secret',
     ];
 
     /**
@@ -42,20 +50,29 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array<int, string>
+     */
+    protected $appends = [
+        'profile_photo_url',
+    ];
+
     public function getUsuariosPesquisarIndex(string $search = '')
     {
         /* Como já estamos dentro do model "Produto", este "$this" por
            si só, já representa este model. */
-        $produto = $this->where(function ($query) use ($search) {
+        $usuario = $this->where(function ($query) use ($search) {
             /* Condicional, se "$search" existir, não for uma string
                vazia, daí faz a consulta ao banco de dados. */
             if ($search) {
-                $query->where('nome', $search);
+                $query->where('name', $search);
                 /* O "like" quer dizer, parece com... */
-                $query->orWhere('nome', 'LIKE', "%{$search}%");
+                $query->orWhere('name', 'LIKE', "%{$search}%");
             }
         })->get();
 
-        return $produto;
+        return $usuario;
     }
 }
