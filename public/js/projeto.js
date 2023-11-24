@@ -43,6 +43,8 @@ function deleteRegistroPaginacao(rotaUrl, idDoRegistro) {
 /* InputMask */
 $('#mascara_valor').mask('#.##0,00', { reverse: true });
 
+$('#macaddress').mask('AA:AA:AA:AA:AA:AA');
+
 $("#cep").blur(function () {
     var cep = $(this).val().replace(/\D/g, '');
     if (cep != "") {

@@ -17,6 +17,17 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('dashboard', function () {
+        return view('empresa');
+    })->name('dashboard');
+});
+
     /* http://localhost:8989 */
     Route::get('/', [EmpresaController::class, 'index'])->name('empresa.index');
 
@@ -108,14 +119,4 @@ Route::prefix('usuario')->group(function () {
     Route::get('/atualizarUsuario/{id}', [UsuarioController::class, 'atualizarUsuario'])->name('atualizar.usuario');
     Route::put('/atualizarUsuario/{id}', [UsuarioController::class, 'atualizarUsuario'])->name('atualizar.usuario');
     Route::delete('/delete', [UsuarioController::class, 'delete'])->name('usuario.delete');
-});
-
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('dashboard', function () {
-        return view('empresa');
-    })->name('dashboard');
 });

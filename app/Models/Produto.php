@@ -4,14 +4,47 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Pagination\AbstractPaginator;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Produto extends Model
 {
+    /* Usando "SoftDeletes", quando o item for excluído, ele não será 
+       removido do banco de dados. Na coluna "deleted_at", terá a
+       data da exclusão. mas será mantido ainda no bd. */
+    //use SoftDeletes;
     use HasFactory;
 
     /* O "model" sempre está em contato com o banco de dados. */
+    /* Por questão de segurança, o "fillable" é para dizer quais são
+       os únicos campos que serão aceitos pelo model. O usuário poderia
+       tentar inspecionar e injetar algum campo a mais, lá no front. */
 
-    protected $fillable = ['nome', 'valor'];
+    /**
+    * The database table used by the model.
+    *
+    * @var string
+    */
+    protected $table = 'produtos';
+
+    /**
+    * The database primary key value.
+    *
+    * @var string
+    */
+    protected $primaryKey = 'id';
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = 
+    [
+        'nome', 'valor','banda', 'datanota', 'marca', 'modelo', 'notafiscal',
+        'diametro', 'situacao', 'observacao','metros', 'tipodecabo','voltagem',
+        'serial','macaddress','tipodeproduto'
+    ];
 
     public function getProdutosPesquisarIndex(string $search = '')
     {

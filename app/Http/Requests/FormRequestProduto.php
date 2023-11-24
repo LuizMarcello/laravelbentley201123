@@ -25,9 +25,22 @@ class FormRequestProduto extends FormRequest
         /* Se for "POST" entra aqui */
         if ($this->method() == "POST" || $this->method() == 'PUT') {
             $request = [
-                'nome' => 'required',
-                'valor' => 'required'
-            ];
+                //'nome' => 'required',
+                //'valor' => 'required',
+                //'banda' => 'required',
+                //'datanota' => 'required',
+                //'marca' => 'required',
+                //'modelo' => 'required',
+                //'notafiscal' => 'required',
+                //'diametro' => 'required',
+                //'situacao' => 'required',
+                //'observacao' => 'required',
+                //'metros' => 'required',
+                //'tipodecabo' => 'required',
+                //'voltagem' => 'required',
+                //'serial' => 'required',
+                //'macaddress' => 'required'
+        ];
         }
         /* Se for "GET" retorna string vazia, e não valida nada */
         return $request;

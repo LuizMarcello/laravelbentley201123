@@ -38,6 +38,8 @@ class ProdutosController extends Controller
         $id = $request->id;
         $buscaRegistro = Produto::find($id);
         $buscaRegistro->delete();
+
+        Toastr::success('Excluido com sucesso');
         return response()->json(['success' => true]);
     }
 

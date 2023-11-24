@@ -24,16 +24,30 @@
                 <table class="table table-striped table-sm">
                     <thead>
                         <tr>
+                            <th>Categoria</th>
                             <th>Nome</th>
+                            <th>Banda</th>
+                            <th>Marca</th>
+                            <th>Modelo</th>
+                            <th>Nota fiscal</th>
                             <th>Valor</th>
+                            <th>Serial</th>
+                            <th>Situação</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($findProduto as $produto)
                             <tr>
+                                <td>{{ $produto->tipodeproduto }}</td>
                                 <td>{{ $produto->nome }}</td>
+                                <td>{{ $produto->banda }}</td>
+                                <td>{{ $produto->marca }}</td>
+                                <td>{{ $produto->modelo }}</td>
+                                <td>{{ $produto->notafiscal }}</td>
                                 <td>{{ 'R$' . ' ' . number_format($produto->valor, 2, ',', '.') }}</td>
+                                <td>{{ $produto->serial }}</td>
+                                <td>{{ $produto->situacao }}</td>
                                 <td>
                                     {{-- Assim, vai enviar um "get", será para a rota "get" --}}
                                     <a href="{{ route('atualizar.produto', $produto->id) }}" class="btn btn-light btn-sm">

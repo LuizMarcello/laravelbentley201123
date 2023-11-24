@@ -3,6 +3,10 @@
         <ul class="nav flex-column">
 
             @auth
+
+                <li class="nav-item" style="margin: 9%; color: blue">
+                    {{ Auth::user()->name }}
+                </li>
                 <li class="nav-item">
                     {{-- <a class="nav-link" aria-current="page" href="{{ route('empresa.index') }}"> --}}
                     <a class="nav-link" aria-current="page" href="/">
