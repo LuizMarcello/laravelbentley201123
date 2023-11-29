@@ -13,7 +13,7 @@
     //Funções após a leitura do documento
     $(document).ready(function() {
         //Select para mostrar e esconder divs
-        $('#fisicaoujuridica').on('change', function() {
+        $('#selectcategoria').on('change', function() {
             var SelectValue = '.' + $(this).val();
             $('#pai div').hide();
             $(SelectValue).toggle();
@@ -38,7 +38,7 @@
         {{-- Mesmo nome das colunas no bd --}}
         <div class="mb-3">
             <label class="form-label">Tipo de produto</label>
-            <select class="form-select" name="tipodeproduto" id="fisicaoujuridica">
+            <select class="form-select" name="tipodeproduto" id="selectcategoria">
                 <option selected>Selecione uma categoria</option>
                 <option value="antena">Antena</option>
                 <option value="groove">Groove</option>
@@ -63,7 +63,7 @@
                     <div class="invalid-feedback">{{ $errors->first('nome') }}</div>
                 @endif
             </div>
-            <div class="mb-3">
+            <div class="mb-3 modem fonte">
                 <label class="form-label">Valor</label>
                 <input id="mascara_valor" value="{{ old('valor') }}"
                     class="form-control 
