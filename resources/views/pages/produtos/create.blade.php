@@ -49,10 +49,53 @@
                 <option value="modem">Modem</option>
                 <option value="roteador">Roteador</option>
                 <option value="tria">Tria</option>
+                <option value="outro">Outro</option>
             </select>
         </div>
 
         <div id="pai">
+
+            <div class="mb-3 modem">
+                <label class="form-label">Modelo do Modem</label>
+                <select class="form-select" name="modelo" id="selectcategoria">
+                    <option selected>Selecione um modelo</option>
+                    <option value="ht-2010">HT-2010</option>
+                    <option value="newtec">NewTec</option>
+                    <option value="surfbeam-2">SurfBeam-2</option>
+                    <option value="gemini-s2x">Gemini S2X</option>
+                    <option value="iq-series">IQ Series</option>
+                    <option value="outro">Outro</option>
+                </select>
+            </div>
+
+            {{-- <div class="mb-3 antena groove cabo fonte lnb ilnb modem roteador tria">
+                <label class="form-label">Marca</label>
+                <input type="text" value="{{ old('marca') }}"
+                    class="form-control 
+             @error('marca') is-invalid @enderror" name="marca">
+                @if ($errors->has('marca'))
+                    <div class="invalid-feedback">{{ $errors->first('marca') }}</div>
+                @endif
+            </div> --}}
+
+            <div class="mb-3 modem antena groove cabo fonte ilnb lnb roteador tria outro">
+                <label class="form-label">Marca</label>
+                <select class="form-select" name="marca" id="selectcategoria">
+                    <option selected>Selecione a marca</option>
+                    <option value="gilat">Gilat</option>
+                    <option value="viasat">Viasat</option>
+                    <option value="idirect">iDirect</option>
+                    <option value="hughes">Hughes</option>
+                    <option value="ubiquiti">Ubiquiti</option>
+                    <option value="mikrotik">Mikrotik</option>
+                    <option value="dell">Dell</option>
+                    <option value="intelbras">Intelbrás</option>
+                    <option value="cisco">Cisco</option>
+                    <option value="tplink">Tp-Link</option>
+                    <option value="outra">Outra</option>
+                </select>
+            </div>
+
 
             <div class="mb-3">
                 <label class="form-label">Nome</label>
@@ -63,7 +106,7 @@
                     <div class="invalid-feedback">{{ $errors->first('nome') }}</div>
                 @endif
             </div>
-            <div class="mb-3 modem fonte">
+            <div class="mb-3 modem fonte antena groove cabo lnb ilnb roteador tria">
                 <label class="form-label">Valor</label>
                 <input id="mascara_valor" value="{{ old('valor') }}"
                     class="form-control 
@@ -89,15 +132,6 @@
              @error('datanota') is-invalid @enderror" name="datanota">
                 @if ($errors->has('datanota'))
                     <div class="invalid-feedback">{{ $errors->first('datanota') }}</div>
-                @endif
-            </div>
-            <div class="mb-3 antena groove cabo fonte lnb ilnb modem roteador tria">
-                <label class="form-label">Marca</label>
-                <input type="text" value="{{ old('marca') }}"
-                    class="form-control 
-             @error('marca') is-invalid @enderror" name="marca">
-                @if ($errors->has('marca'))
-                    <div class="invalid-feedback">{{ $errors->first('marca') }}</div>
                 @endif
             </div>
             <div class="mb-3 antena groove fonte lnb ilnb modem roteador tria">
@@ -127,15 +161,21 @@
                     <div class="invalid-feedback">{{ $errors->first('diametro') }}</div>
                 @endif
             </div>
+
+
             <div class="mb-3 antena groove cabo fonte lnb ilnb modem roteador tria">
                 <label class="form-label">Situacao</label>
-                <input type="text" value="{{ old('situacao') }}"
-                    class="form-control 
-             @error('situacao') is-invalid @enderror" name="situacao">
-                @if ($errors->has('situacao'))
-                    <div class="invalid-feedback">{{ $errors->first('situacao') }}</div>
-                @endif
+                <select class="form-select" name="situacao" id="selectcategoria">
+                    <option selected>Selecione a situação</option>
+                    <option value="estoque">Estoque</option>
+                    <option value="cliente">Cliente</option>
+                    <option value="defeito">Defeito</option>
+                    <option value="garantia">Garantia</option>
+                    <option value="outra">Outra</option>
+                </select>
             </div>
+
+
             <div class="mb-3 antena groove cabo fonte lnb ilnb modem roteador tria">
                 <label class="form-label">Observação</label>
                 <input type="text" value="{{ old('observacao') }}"

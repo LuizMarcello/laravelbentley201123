@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\EmpresaController;
@@ -30,6 +31,8 @@ Route::middleware([
 
     /* http://localhost:8989 */
     Route::get('/', [EmpresaController::class, 'index'])->name('empresa.index');
+
+    Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
 /* Prefixo "produtos" */
 Route::prefix('produtos')->group(function () {
