@@ -9,9 +9,9 @@
                 </li>
                 <li class="nav-item">
                     {{-- <a class="nav-link" aria-current="page" href="{{ route('empresa.index') }}"> --}}
-                    <a class="nav-link" aria-current="page" href="/">
+                    <a class="nav-link" aria-current="page" href="{{ route('empresa.dashboard') }}">
                         <span data-feather="home" class="align-text-bottom"></span>
-                        Empresa
+                        Dashboard
                     </a>
                 </li>
                 <li class="nav-item">

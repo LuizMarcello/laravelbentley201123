@@ -9,11 +9,11 @@
     <meta name="generator" content="Hugo 0.104.2">
     <title>Gestão</title>
 
-    @yield('styles')
+    {{-- @yield('styles') --}}
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
-
+   
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="{{ asset('icones/apple-touch-icon.png') }}" sizes="180x180">
     <link rel="icon" href="{{ asset('icones/favicon-32x32.png') }}" sizes="32x32" type="image/png">
@@ -23,6 +23,10 @@
     <link rel="icon" href="{{ asset('icones/favicon.ico') }}">
     <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
     <meta name="theme-color" content="#712cf9">
+
+    <!-- Compiled and minified CSS -->
+    {{-- materialize --}}
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> --}}
 
 
     <style>
@@ -117,7 +121,7 @@
         </div>
     </div>
 
-    @yield('scripts')
+    {{-- @yield('scripts') --}}
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
     <script src="/js/bootstrap.bundle.min.js"></script>
@@ -140,10 +144,14 @@
 
     <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
 
+    <!-- Compiled and minified JavaScript -->
+    {{-- materialize --}}
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> --}}
+
     {{-- Este "Toastr" foi instalado como uma dependência --}}
     {{-- Para mensagens personalizadas --}}
     {!! Toastr::message() !!}
-
+    
 </body>
 
 </html>

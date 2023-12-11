@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProdutosController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\ClientesController;
@@ -28,8 +29,11 @@ Route::middleware([
     })->name('dashboard');
 });
 
+    /* http://localhost:8989/empresa */
+    Route::get('/empresa', [EmpresaController::class, 'index'])->name('empresa.index');
+
     /* http://localhost:8989 */
-    Route::get('/', [EmpresaController::class, 'index'])->name('empresa.index');
+    Route::get('/', [DashboardController::class, 'index'])->name('empresa.dashboard');
 
 /* Prefixo "produtos" */
 Route::prefix('produtos')->group(function () {

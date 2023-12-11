@@ -17,7 +17,7 @@ class EmpresaController extends Controller
         $totalDeVendasCadastradas = $this->buscaTotalVendasCadastradas();
         $totalDeUsuariosCadastrados = $this->buscaTotalUsuariosCadastrados();
 
-        /* compact(): Enviando para a view */
+        /* compact(): Enviando dados para a view */
         return view('empresa', compact(
          'totalDeClientesCadastrados',
          'totalDeProdutosCadastrados',
