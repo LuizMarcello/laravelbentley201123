@@ -135,17 +135,32 @@
                 <div class="invalid-feedback">{{ $errors->first('diametro') }}</div>
             @endif
         </div>
-        <div class="mb-3">
-            <label class="form-label">Situacão</label>
+
+
+        {{-- <div class="mb-3">
+            <label class="form-label">Situacão</label> --}}
             {{-- Se houver alguma alteração nos dados, ele retorna para o formulário o que
                  foi alterado(?), senão retorna o que já estava antes(:) --}}
-            <input type="text" value="{{ isset($findProduto->situacao) ? $findProduto->situacao : old('nsituacaome') }}"
+           {{--  <input type="text" value="{{ isset($findProduto->situacao) ? $findProduto->situacao : old('situacao') }}"
                 class="form-control 
              @error('situacao') is-invalid @enderror" name="situacao">
             @if ($errors->has('situacao'))
                 <div class="invalid-feedback">{{ $errors->first('situacao') }}</div>
             @endif
+        </div> --}}
+
+        <div class="mb-3 antena groove cabo fonte lnb ilnb modem roteador tria">
+            <label class="form-label">Situacao</label>
+            <select class="form-select" name="situacao" id="selectcategoria">
+                <option selected>{{ $findProduto->situacao }}</option>
+                {{-- <option selected>Selecione a situação</option> --}}
+                <option value="estoque">Estoque</option>
+                <option value="cliente">Cliente</option>
+                <option value="garantia">Garantia</option>
+            </select>
         </div>
+
+
         <div class="mb-3">
             <label class="form-label">Observacão</label>
             {{-- Se houver alguma alteração nos dados, ele retorna para o formulário o que
